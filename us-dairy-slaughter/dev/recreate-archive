@@ -1,0 +1,35 @@
+#!/bin/bash
+
+let "prev_entry_year=0"
+let "vol=0"
+let "prev_vol=0"
+while read -r line;
+do
+    date=$(echo $line | sed 's/\(.*\),.*,.*,.*,.*,1,1/\1/')
+    count=$(echo $line | sed 's/.*,\(.*\),.*,.*,.*,1,1/\1/')
+    count=$(echo $count | sed 's/\r//g')
+    year=$(echo $date | sed 's~.*/.*/\(.*\)~\1~')
+    year=$(echo $year | sed 's/\r//g')
+    if [ $prev_entry_year != $year ];then
+	prev_entry_year=$year
+	vol=$count
+    else
+	let vol=vol+count
+	let prev_vol=vol
+    fi
+    for ((i=4; i>=0; i--))
+    do
+	curr_date=$(date -d "$date"" -$i days" +%m/%d/%Y)
+	curr_year=$(date -d $curr_date +%Y)
+	curr_vol=$vol
+	if [ $curr_year != $year ] && [ $prev_vol != 0 ];then
+            echo $curr_date
+            let curr_vol=prev_vol+count
+	fi
+	if [ $i != 0 ];then
+	    curr_vol=1
+	fi
+        #echo "$(date -d "$date"" -$i days" +%m/%d/%Y),$count,$count,$count,$count,$curr_vol,1" >> final-dairy-slaughter2.csv
+        echo "$curr_date,$count,$count,$count,$count,$curr_vol,1" >> us-dairy-slaughter-2000-04082022.csv
+    done
+done < $1

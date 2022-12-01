@@ -1,0 +1,107 @@
+#!/bin/bash
+
+reports_to_add=(
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-03-11/426694/ams_3207_00055.txt"
+        "https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-03-18/429143/ams_3207_00056.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-03-25/431585/ams_3207_00057.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-04-01/434033/ams_3207_00058.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-04-08/436364/ams_3207_00059.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-04-15/438825/ams_3207_00060.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-04-22/441172/ams_3207_00061.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-04-29/443619/ams_3207_00062.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-05-06/446067/ams_3207_00063.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-05-13/448381/ams_3207_00064.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-05-20/450821/ams_3207_00065.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-05-27/453336/ams_3207_00066.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-06-03/455355/ams_3207_00067.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-06-10/457779/ams_3207_00068.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-06-17/460221/ams_3207_00069.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-06-24/462576/ams_3207_00070.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-07-01/464918/ams_3207_00071.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-07-08/466837/ams_3207_00072.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-07-15/481004/ams_3207_00073.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-07-22/483702/ams_3207_00074.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-07-29/486048/ams_3207_00075.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-08-05/488546/ams_3207_00076.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-08-12/492602/ams_3207_00077.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-08-19/496109/ams_3207_00078.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-08-26/498682/ams_3207_00079.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-09-02/501195/ams_3207_00080.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-09-09/503455/ams_3207_00081.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-09-16/505828/ams_3207_00082.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-09-23/508275/ams_3207_00083.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-09-30/510710/ams_3207_00084.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-10-07/513137/ams_3207_00085.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-10-14/515424/ams_3207_00086.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-10-21/517771/ams_3207_00087.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-10-28/520188/ams_3207_00088.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-11-04/522776/ams_3207_00089.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-11-12/525781/ams_3207_00090.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-11-18/527850/ams_3207_00091.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-11-26/530177/ams_3207_00092.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-12-02/532128/ams_3207_00093.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-12-09/534767/ams_3207_00094.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-12-16/537232/ams_3207_00095.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-12-23/539510/ams_3207_00096.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2021-12-30/541234/ams_3207_00097.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-01-06/543310/ams_3207_00098.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-01-13/545692/ams_3207_00099.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-01-20/547796/ams_3207_00100.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-01-27/550191/ams_3207_00101.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-02-03/552752/ams_3207_00102.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-02-10/555166/ams_3207_00103.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-02-17/557560/ams_3207_00104.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-02-24/559706/ams_3207_00105.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-03-03/562296/ams_3207_00106.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-03-10/564909/ams_3207_00107.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-03-17/567373/ams_3207_00108.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-03-24/570264/ams_3207_00109.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-03-31/572762/ams_3207_00110.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-04-07/575842/ams_3207_00111.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-04-14/579654/ams_3207_00112.txt"
+	"https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3207/2022-04-21/582173/ams_3207_00113.txt"
+)
+
+let "prev_entry_year=2021"
+let "vol=518100"
+let "prev_vol=518100"
+
+for report in ${reports_to_add[@]};
+do
+    date_count="$(echo "$(echo $(echo "$(curl -s $report)" | sed -n -e 7p -e 23p | sed -e 's~[[:space:]]*Week ending-\([[:digit:]]*/[[:digit:]]*/[[:digit:]]*\).*~\1~' -e 'N;s~U.S. 2/[[:space:]]\+\(\([0-9]\|,\)\{1,\}\).*~\1~') | sed -n -e 's/,//' -e 's/ /,/p')")"
+    date="$(echo $date_count | sed 's/\(.\+\),.\+/\1/')"
+    date=$(date -d "$date"" -1 days" +%m/%d/%Y)
+    count="$(echo $date_count | sed 's/.*,\(.*\)/\1/')"
+    next_0=4
+    if [ "${date:0:1}" = "0" ];then
+        date=${date:1}
+        next_0=3
+    fi
+    if [ "${date:$(($next_0 - 1)):1}" = "0" ];then
+        date=$(echo "$date" | cut --complement -c$next_0-$next_0)
+    fi
+    year=$(echo $date | sed 's~.*/.*/\(.*\)~\1~')
+    year=$(echo $year | sed 's/\r//g')
+    if [ $prev_entry_year != $year ];then
+        prev_entry_year=$year
+        vol=$count
+    else
+        let vol=vol+count
+        let prev_vol=vol
+    fi
+    for ((i=4; i>=0; i--))
+    do
+        curr_date=$(date -d "$date"" -$i days" +%m/%d/%Y)
+        curr_year=$(date -d $curr_date +%Y)
+        curr_vol=$vol
+        if [ $curr_year != $year ] && [ $prev_vol != 0 ];then
+            echo $curr_date
+            let curr_vol=prev_vol+count
+        fi
+	if [ $i != 0 ];then
+	    curr_vol=1
+	fi
+        #echo "$(date -d "$date"" -$i days" +%m/%d/%Y),$count,$count,$count,$count,1,1" >> $1
+        echo "$curr_date,$count,$count,$count,$count,$curr_vol,1" >> $1 
+    done
+done
